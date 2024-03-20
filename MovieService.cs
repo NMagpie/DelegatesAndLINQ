@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _8._Delegates_and_LINQ
+﻿namespace _8._Delegates_and_LINQ
 {
     public delegate void ShareOption(Movie movie);
 

@@ -80,20 +80,30 @@ Console.WriteLine();
 
 var selectedMovies = movies.Where(movie => movie.Genres.Contains("Action"))
       .OrderBy(movie => movie.Genres.Count)
-      .Select(movie => movie.Title);
+      .Select(movie => new { movie.Title, movie.Genres });
+
+foreach (var movie in selectedMovies)
+{
+    Console.WriteLine(movie.Title + ": " + string.Join(", ", movie.Genres));
+}
+
+Console.WriteLine();
 
 var allGenres = movies.SelectMany(movie => movie.Genres)
     .Distinct()
     .OrderBy(genre => genre);
 
-foreach (var movie in selectedMovies)
-{
-    Console.WriteLine(movie);
-}
-
-Console.WriteLine();
-
 foreach (var genre in allGenres)
 {
     Console.WriteLine(genre);
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Example of query syntax
+
+var moviesWithHighRating = from movie in movies
+                           where movie.Rating > 7
+                           select movie.Title;
